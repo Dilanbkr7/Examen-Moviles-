@@ -138,15 +138,37 @@ Regla de negocio en base de datos: el *constraint trigger* `validar_totales_acta
 
 Comandos: `npm run typecheck` y `npm run build`.
 
+## Evidencias de ejecución (APK en un teléfono Android)
+
+Capturas tomadas con el APK de [`apk/app-debug.apk`](apk/app-debug.apk) conectado al proyecto Supabase. La cédula real se ocultó en las imágenes.
+
+| # | Captura | Qué muestra | Requisito |
+| --- | --- | --- | --- |
+| 1 | <img src="docs/capturas/01-instalacion-play-protect.jpg" width="160"> | Instalación del APK desde el teléfono; Google Play Protect analiza la app "Control Electoral". | Entrega / APK |
+| 2 | <img src="docs/capturas/02-app-instalada.jpg" width="160"> | La app queda instalada con su ícono propio. | Entrega / APK |
+| 3 | <img src="docs/capturas/03-pantalla-de-carga.jpg" width="160"> | Pantalla de carga animada mientras se recupera la sesión guardada (estado explícito de carga). | R9 |
+| 4 | <img src="docs/capturas/04-login.jpg" width="160"> | Inicio de sesión con la **cédula** como identificador visible y enlace "¿Olvidó su contraseña?". | R3 |
+| 5 | <img src="docs/capturas/05-login-cedula.jpg" width="160"> | El campo cédula solo admite 10 dígitos; la contraseña se oculta. | R2, R3 |
+| 6 | <img src="docs/capturas/06-login-ingresando.jpg" width="160"> | Botón en estado de carga mientras la Edge Function `login` valida las credenciales en el servidor. | R3, R9 |
+| 7 | <img src="docs/capturas/07-cambio-obligatorio-contrasena.jpg" width="160"> | Primer acceso con `Ecuador2026`: la app obliga a cambiar la contraseña antes de continuar. | R3 |
+| 8 | <img src="docs/capturas/08-nueva-contrasena.jpg" width="160"> | Ingreso de la nueva contraseña (mínimo 8 caracteres, letras y números, distinta de la inicial). | R3 |
+| 9 | <img src="docs/capturas/09-guardando-contrasena.jpg" width="160"> | Guardando la nueva contraseña; se marca `debe_cambiar_password = false`. | R3, R9 |
+| 10 | <img src="docs/capturas/10-recintos-provincial.jpg" width="160"> | Coordinador provincial: recintos precargados de Quito (cantón, parroquia, nombre y JRV), avance provincial de actas y coordinador de cada recinto. | R1, R4 |
+| 11 | <img src="docs/capturas/11-nuevo-recinto-parroquia.jpg" width="160"> | Crear recinto: selección de parroquia, nombre, dirección y cantidad de JRV. Las JRV se crean automáticamente. | R4 |
+| 12 | <img src="docs/capturas/12-dashboard.jpg" width="160"> | Dashboard: votos por candidato (Alcaldía / Prefectura), ámbito consolidado o por recinto, y coordenadas GPS de las actas. | R4 |
+| 13 | <img src="docs/capturas/13-recinto-benalcazar-jrv.jpg" width="160"> | Detalle de recinto: avance, asignación del coordinador de recinto y JRV 1–4 con estado de actas de Alcalde y Prefecto. | R4, R5 |
+| 14 | <img src="docs/capturas/14-recinto-quito-sur-jrv.jpg" width="160"> | Otro recinto (3 JRV): cada JRV muestra su veedor y el estado de sus actas. | R1, R4 |
+| 15 | <img src="docs/capturas/15-recinto-mejia-jrv.jpg" width="160"> | Recinto con 5 JRV y opción "Crear coordinador para este recinto" (no hay autorregistro). | R2, R4 |
+
 ## Credenciales de demostración (no sensibles)
 
 Todas las cuentas nuevas se crean con la contraseña inicial **`Ecuador2026`** y deben cambiarla en el primer acceso. Las cédulas de demostración se completan después de crear los usuarios:
 
 | Rol | Cédula | Contraseña tras el primer acceso |
 | --- | --- | --- |
-| Coordinador provincial | _(completar)_ | se entrega en la defensa |
-| Coordinador de recinto | _(completar)_ | se entrega en la defensa |
-| Veedor | _(completar)_ | se entrega en la defensa |
+| Coordinador provincial | se entrega en la defensa (cuenta real) | se entrega en la defensa |
+| Coordinador de recinto | 1723456784 (cédula de prueba) | Ecuador2026 hasta el primer acceso |
+| Veedor | 1709876542 (cédula de prueba) | Ecuador2026 hasta el primer acceso |
 
 ## Uso de IA
 
