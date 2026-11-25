@@ -1,7 +1,7 @@
 // Proteccion de rutas en la interfaz (UX). La seguridad real esta en RLS del backend.
 import type { ReactNode } from 'react';
 import { Redirect } from 'react-router-dom';
-import { IonContent, IonPage, IonSpinner } from '@ionic/react';
+import { IonContent, IonPage } from '@ionic/react';
 import { useAuth } from '../contexts/AuthContext';
 import type { Rol } from '../models';
 
@@ -14,10 +14,18 @@ export const RUTA_INICIO: Record<Rol, string> = {
 export function PantallaCarga() {
   return (
     <IonPage>
-      <IonContent className="ion-padding">
-        <div className="centrado">
-          <IonSpinner name="crescent" />
-          <p>Cargando…</p>
+      <IonContent>
+        <div className="intro" role="status" aria-live="polite">
+          <img src="/logo.png" alt="Control Electoral" className="intro-logo" />
+          <p className="intro-titulo">Control Electoral</p>
+          <p className="intro-texto">
+            Cargando
+            <span className="puntos">
+              <span>.</span>
+              <span>.</span>
+              <span>.</span>
+            </span>
+          </p>
         </div>
       </IonContent>
     </IonPage>

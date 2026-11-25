@@ -34,10 +34,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
+    // La pantalla de inicio se muestra al menos 1,5 s para que la animacion de entrada sea suave
+    const minimoIntro = new Promise((r) => setTimeout(r, 1500));
     // Sesion guardada (Preferences) al abrir la app
     supabase.auth.getSession().then(async ({ data }) => {
       setSesion(data.session);
-      await cargarPerfil(data.session);
+      await Promise.all([cargarPerfil(data.session), minimoIntro]);
       setCargando(false);
     });
     // Sincronizacion con Supabase Auth (login, logout, refresco de token)

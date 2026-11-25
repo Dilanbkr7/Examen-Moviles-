@@ -42,6 +42,7 @@ export default function Login() {
     <IonPage>
       <IonContent className="ion-padding">
         <div className="login-cabecera">
+          <img src="/logo.png" alt="" className="login-logo" />
           <h1>Control Electoral</h1>
           <p>Escrutinio por JRV · Alcaldía y Prefectura</p>
         </div>
