@@ -6,6 +6,7 @@ import CampoError from '../../components/CampoError';
 import { RUTA_INICIO } from '../../components/RutaProtegida';
 import { validarCedula } from '../../utils/validaciones';
 import { mensajeError } from '../../utils/errores';
+import { FILTROS, LIMITES, limpiarEntrada } from '../../utils/entrada';
 
 export default function Login() {
   const { sesion, perfil, iniciarSesion } = useAuth();
@@ -52,9 +53,8 @@ export default function Login() {
               label="Cédula"
               labelPlacement="stacked"
               inputmode="numeric"
-              maxlength={10}
               value={cedula}
-              onIonInput={(e) => setCedula(String(e.detail.value ?? ''))}
+              onIonInput={(e) => setCedula(limpiarEntrada(e, LIMITES.cedula, FILTROS.digitos))}
               onIonBlur={() => cedula && setErrorCedula(validarCedula(cedula))}
             />
             <CampoError mensaje={errorCedula} />
@@ -65,7 +65,7 @@ export default function Login() {
               labelPlacement="stacked"
               type="password"
               value={password}
-              onIonInput={(e) => setPassword(String(e.detail.value ?? ''))}
+              onIonInput={(e) => setPassword(limpiarEntrada(e, LIMITES.password))}
               onKeyUp={(e) => e.key === 'Enter' && entrar()}
             />
           </IonItem>

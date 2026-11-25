@@ -2,6 +2,7 @@
 // La misma regla de totales se repite en la base de datos (trigger validar_totales_acta).
 
 import type { NuevoUsuario } from '../models';
+import { LIMITES } from './entrada';
 
 export const PASSWORD_INICIAL = 'Ecuador2026';
 
@@ -29,6 +30,7 @@ export function validarCedula(cedula: string): string | null {
 
 export function validarCorreo(correo: string): string | null {
   if (!correo.trim()) return 'El correo es obligatorio.';
+  if (correo.trim().length > LIMITES.correo) return `El correo admite máximo ${LIMITES.correo} caracteres.`;
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo.trim()) ? null : 'Correo electrónico inválido.';
 }
 
@@ -39,11 +41,13 @@ export function validarTelefono(telefono: string): string | null {
 export function validarNombre(valor: string, campo: string): string | null {
   const limpio = valor.trim();
   if (limpio.length < 2) return `${campo} es obligatorio.`;
+  if (limpio.length > LIMITES.nombre) return `${campo}: máximo ${LIMITES.nombre} caracteres.`;
   return /^[A-Za-zÁÉÍÓÚáéíóúÑñÜü' ]+$/.test(limpio) ? null : `${campo} solo admite letras.`;
 }
 
 export function validarNuevaPassword(password: string, confirmacion: string): string | null {
   if (password.length < 8) return 'La contraseña debe tener al menos 8 caracteres.';
+  if (password.length > LIMITES.password) return `La contraseña admite máximo ${LIMITES.password} caracteres.`;
   if (!/[A-Za-z]/.test(password) || !/\d/.test(password)) return 'Debe combinar letras y números.';
   if (password === PASSWORD_INICIAL) return 'No puede reutilizar la contraseña inicial.';
   if (password !== confirmacion) return 'Las contraseñas no coinciden.';

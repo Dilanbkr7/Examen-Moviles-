@@ -3,6 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import { useAuth } from '../../contexts/AuthContext';
 import CampoError from '../../components/CampoError';
+import { LIMITES, limpiarEntrada } from '../../utils/entrada';
 import { RUTA_INICIO } from '../../components/RutaProtegida';
 import { cambiarPassword } from '../../services/authService';
 import { validarNuevaPassword } from '../../utils/validaciones';
@@ -49,11 +50,11 @@ export default function CambiarPassword() {
         <IonList>
           <IonItem>
             <IonInput label="Nueva contraseña" labelPlacement="stacked" type="password" value={password}
-              onIonInput={(e) => setPassword(String(e.detail.value ?? ''))} />
+              onIonInput={(e) => setPassword(limpiarEntrada(e, LIMITES.password))} />
           </IonItem>
           <IonItem>
             <IonInput label="Repetir contraseña" labelPlacement="stacked" type="password" value={confirmacion}
-              onIonInput={(e) => setConfirmacion(String(e.detail.value ?? ''))} />
+              onIonInput={(e) => setConfirmacion(limpiarEntrada(e, LIMITES.password))} />
             <CampoError mensaje={error} />
           </IonItem>
         </IonList>

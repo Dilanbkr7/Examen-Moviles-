@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { IonButton, IonInput, IonItem, IonList, IonSpinner, IonText, useIonToast } from '@ionic/react';
 import CampoError from './CampoError';
+import { FILTROS, LIMITES, limpiarEntrada } from '../utils/entrada';
 import { validarNuevoUsuario, type ErroresUsuario, PASSWORD_INICIAL } from '../utils/validaciones';
 import { crearUsuario } from '../services/usuariosService';
 import { mensajeError } from '../utils/errores';
@@ -53,16 +54,15 @@ export default function FormularioUsuario({ rol, onCreado }: Props) {
     }
   };
 
-  const campo = (k: keyof NuevoUsuario, etiqueta: string, tipo: 'text' | 'email' | 'tel' = 'text', max?: number) => (
+  const campo = (k: keyof NuevoUsuario, etiqueta: string, tipo: 'text' | 'email' | 'tel', max: number, filtro?: RegExp) => (
     <IonItem key={k}>
       <IonInput
         label={etiqueta}
         labelPlacement="stacked"
         type={tipo}
         inputmode={k === 'cedula' || k === 'telefono' ? 'numeric' : undefined}
-        maxlength={max}
         value={datos[k]}
-        onIonInput={(e) => cambiar(k, String(e.detail.value ?? ''))}
+        onIonInput={(e) => cambiar(k, limpiarEntrada(e, max, filtro))}
       />
       <CampoError mensaje={errores[k]} />
     </IonItem>
@@ -70,11 +70,11 @@ export default function FormularioUsuario({ rol, onCreado }: Props) {
 
   return (
     <IonList>
-      {campo('cedula', 'Cédula', 'text', 10)}
-      {campo('nombres', 'Nombres')}
-      {campo('apellidos', 'Apellidos')}
-      {campo('telefono', 'Celular', 'tel', 10)}
-      {campo('correo', 'Correo electrónico', 'email')}
+      {campo('cedula', 'Cédula', 'text', LIMITES.cedula, FILTROS.digitos)}
+      {campo('nombres', 'Nombres', 'text', LIMITES.nombre, FILTROS.letras)}
+      {campo('apellidos', 'Apellidos', 'text', LIMITES.nombre, FILTROS.letras)}
+      {campo('telefono', 'Celular', 'tel', LIMITES.telefono, FILTROS.digitos)}
+      {campo('correo', 'Correo electrónico', 'email', LIMITES.correo, FILTROS.sinEspacios)}
       <IonText color="medium">
         <p className="ion-padding-horizontal nota">
           La cuenta se crea con la contraseña inicial {PASSWORD_INICIAL}; el usuario deberá cambiarla en su primer acceso.

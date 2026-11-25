@@ -66,6 +66,7 @@ Deno.serve(async (req) => {
   const correo = String(body.correo ?? '').trim().toLowerCase();
   if (!cedulaValida(cedula)) return json({ error: 'Cédula ecuatoriana inválida.' }, 400);
   if (nombres.length < 2 || apellidos.length < 2) return json({ error: 'Nombres y apellidos son obligatorios.' }, 400);
+  if (nombres.length > 30 || apellidos.length > 30 || correo.length > 60) return json({ error: 'Nombres, apellidos (máx. 30) o correo (máx. 60) demasiado largos.' }, 400);
   if (!/^09\d{8}$/.test(telefono)) return json({ error: 'Celular inválido (10 dígitos, empieza con 09).' }, 400);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo)) return json({ error: 'Correo inválido.' }, 400);
 

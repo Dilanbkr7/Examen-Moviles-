@@ -16,6 +16,7 @@ import { hayConexion } from '../../services/redService';
 import { aEnteroNoNegativo, validarTotalesActa } from '../../utils/validaciones';
 import { calcularNitidez, esNitida, UMBRAL_NITIDEZ } from '../../utils/nitidez';
 import { mensajeError } from '../../utils/errores';
+import { FILTROS, LIMITES, limpiarEntrada } from '../../utils/entrada';
 import type { Acta, Candidatura, Dignidad, Ubicacion } from '../../models';
 
 interface FotoNueva {
@@ -199,7 +200,7 @@ export default function ActaFormulario() {
           type="text"
           value={valor}
           disabled={soloLectura}
-          onIonInput={(e) => setter(String(e.detail.value ?? '').replace(/\D/g, ''))}
+          onIonInput={(e) => setter(limpiarEntrada(e, LIMITES.votos, FILTROS.digitos))}
         />
         {nota && <IonNote slot="end">{nota}</IonNote>}
         {invalido && <IonNote color="danger">Solo números enteros.</IonNote>}

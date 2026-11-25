@@ -10,6 +10,7 @@ import EstadoVista from '../../components/EstadoVista';
 import CampoError from '../../components/CampoError';
 import { crearRecinto, listarAvanceRecintos, listarParroquias } from '../../services/recintosService';
 import { mensajeError } from '../../utils/errores';
+import { FILTROS, LIMITES, limpiarEntrada } from '../../utils/entrada';
 import type { AvanceRecinto, Parroquia } from '../../models';
 
 /** R4: listar y crear recintos, ver avance de actas por recinto. */
@@ -91,16 +92,16 @@ export default function Recintos() {
               </IonItem>
               <IonItem>
                 <IonInput label="Nombre del recinto" labelPlacement="stacked" value={form.nombre}
-                  onIonInput={(e) => setForm({ ...form, nombre: String(e.detail.value ?? '') })} />
+                  onIonInput={(e) => setForm({ ...form, nombre: limpiarEntrada(e, LIMITES.recinto) })} />
                 <CampoError mensaje={errForm.nombre} />
               </IonItem>
               <IonItem>
                 <IonInput label="Dirección (opcional)" labelPlacement="stacked" value={form.direccion}
-                  onIonInput={(e) => setForm({ ...form, direccion: String(e.detail.value ?? '') })} />
+                  onIonInput={(e) => setForm({ ...form, direccion: limpiarEntrada(e, LIMITES.direccion) })} />
               </IonItem>
               <IonItem>
                 <IonInput label="Cantidad de JRV" labelPlacement="stacked" inputmode="numeric" value={form.num_jrv}
-                  onIonInput={(e) => setForm({ ...form, num_jrv: String(e.detail.value ?? '').replace(/\D/g, '') })} />
+                  onIonInput={(e) => setForm({ ...form, num_jrv: limpiarEntrada(e, LIMITES.numJrv, FILTROS.digitos) })} />
                 <CampoError mensaje={errForm.num_jrv} />
               </IonItem>
               <IonButton expand="block" className="ion-margin-top" onClick={guardar} disabled={guardando}>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import CampoError from '../../components/CampoError';
+import { FILTROS, LIMITES, limpiarEntrada } from '../../utils/entrada';
 import { enviarCodigoRecuperacion, restablecerConCodigo } from '../../services/authService';
 import { validarCorreo, validarNuevaPassword } from '../../utils/validaciones';
 import { mensajeError } from '../../utils/errores';
@@ -70,7 +71,7 @@ export default function RecuperarPassword() {
           <IonList>
             <IonItem>
               <IonInput label="Correo registrado" labelPlacement="stacked" type="email" value={correo}
-                onIonInput={(e) => setCorreo(String(e.detail.value ?? ''))} />
+                onIonInput={(e) => setCorreo(limpiarEntrada(e, LIMITES.correo, FILTROS.sinEspacios))} />
               <CampoError mensaje={error} />
             </IonItem>
             <IonButton expand="block" className="ion-margin-top" onClick={enviar} disabled={cargando}>
@@ -82,15 +83,15 @@ export default function RecuperarPassword() {
             <IonText><p>Revise {correo} e ingrese el código recibido.</p></IonText>
             <IonItem>
               <IonInput label="Código" labelPlacement="stacked" inputmode="numeric" value={codigo}
-                onIonInput={(e) => setCodigo(String(e.detail.value ?? ''))} />
+                onIonInput={(e) => setCodigo(limpiarEntrada(e, LIMITES.codigo, FILTROS.digitos))} />
             </IonItem>
             <IonItem>
               <IonInput label="Nueva contraseña" labelPlacement="stacked" type="password" value={password}
-                onIonInput={(e) => setPassword(String(e.detail.value ?? ''))} />
+                onIonInput={(e) => setPassword(limpiarEntrada(e, LIMITES.password))} />
             </IonItem>
             <IonItem>
               <IonInput label="Repetir contraseña" labelPlacement="stacked" type="password" value={confirmacion}
-                onIonInput={(e) => setConfirmacion(String(e.detail.value ?? ''))} />
+                onIonInput={(e) => setConfirmacion(limpiarEntrada(e, LIMITES.password))} />
               <CampoError mensaje={error} />
             </IonItem>
             <IonButton expand="block" className="ion-margin-top" onClick={restablecer} disabled={cargando}>
