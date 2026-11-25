@@ -139,9 +139,9 @@ La decisión se puede verificar mediante los siguientes elementos y pruebas:
 **Repositorio de implementación:**  
 https://github.com/Dilanbkr7/Examen-Moviles-
 
-**Commit de documentación ADR:** [c046e68](https://github.com/Dilanbkr7/Examen-Moviles-/commit/c046e68).
+**Commit de documentación ADR:** [d1ee8b6](https://github.com/Dilanbkr7/Examen-Moviles-/commit/d1ee8b6).
 
-**Commit de implementación:** [fc5fef1](https://github.com/Dilanbkr7/Examen-Moviles-/commit/fc5fef1) (`supabase/01_schema.sql`, `02_seguridad.sql`).
+**Commit de implementación:** [19d745f](https://github.com/Dilanbkr7/Examen-Moviles-/commit/19d745f) (`supabase/01_schema.sql`, `02_seguridad.sql`).
 
 **Responsabilidad:** la decisión arquitectónica fue grupal; la implementación documentada en este repositorio corresponde a Dilan Artemio Obando Suárez.
 

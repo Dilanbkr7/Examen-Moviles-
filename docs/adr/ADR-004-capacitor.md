@@ -120,9 +120,9 @@ ionic capacitor open android
 **Repositorio de implementación:**  
 https://github.com/Dilanbkr7/Examen-Moviles-
 
-**Commit de documentación ADR:** [c046e68](https://github.com/Dilanbkr7/Examen-Moviles-/commit/c046e68).
+**Commit de documentación ADR:** [d1ee8b6](https://github.com/Dilanbkr7/Examen-Moviles-/commit/d1ee8b6).
 
-**Commit de implementación:** [e5b4979](https://github.com/Dilanbkr7/Examen-Moviles-/commit/e5b4979) (`src/services/camaraService.ts`, `src/services/ubicacionService.ts`, `capacitor.config.ts`).
+**Commit de implementación:** [10ce208](https://github.com/Dilanbkr7/Examen-Moviles-/commit/10ce208) (`src/services/camaraService.ts`, `src/services/ubicacionService.ts`, `capacitor.config.ts`).
 
 **Responsabilidad:** la decisión arquitectónica fue grupal; la implementación documentada en este repositorio corresponde a Dilan Artemio Obando Suárez.
 

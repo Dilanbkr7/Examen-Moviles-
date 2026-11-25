@@ -54,6 +54,6 @@ Se implementa la alternativa 2 en `src/utils/nitidez.ts` (`calcularNitidez`). La
 
 ## Trazabilidad
 
-- **Commit de documentación ADR:** [c046e68](https://github.com/Dilanbkr7/Examen-Moviles-/commit/c046e68).
-- **Commit de implementación:** [e5b4979](https://github.com/Dilanbkr7/Examen-Moviles-/commit/e5b4979).
+- **Commit de documentación ADR:** [d1ee8b6](https://github.com/Dilanbkr7/Examen-Moviles-/commit/d1ee8b6).
+- **Commit de implementación:** [10ce208](https://github.com/Dilanbkr7/Examen-Moviles-/commit/10ce208).
 - **Repositorio de implementación:** https://github.com/Dilanbkr7/Examen-Moviles-
