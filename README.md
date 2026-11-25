@@ -6,7 +6,7 @@ Aplicación móvil para que una organización política registre y supervise el 
 - **Equipo (línea base ADR):** Ariel Alexander Arias Toasa y Dilan Artemio Obando Suárez · Grupo 1
 - **Asignatura:** Desarrollo de Aplicaciones Móviles · ESFOT
 - **Video de deliberación:** https://youtu.be/acl_hGWJ8hk
-- **Decisiones de arquitectura:** [`docs/adr`](docs/adr)
+- **Decisiones de arquitectura:** [`docs/adr`](docs/adr) · [Acta de consenso](docs/acta-consenso.md)
 
 ## Tecnologías (según los ADR)
 
@@ -41,10 +41,12 @@ npm run dev                 # navegador: http://localhost:5173
 2. En **SQL Editor** ejecutar en orden: `supabase/01_schema.sql`, `02_seguridad.sql`, `03_storage.sql`, `04_seed.sql`.
 3. Crear el coordinador provincial inicial (no hay autorregistro): **Authentication → Users → Add user** (contraseña `Ecuador2026`, *Auto Confirm User*) y ejecutar el bloque comentado al final de `04_seed.sql`.
 4. **Edge Functions:** desplegar `supabase/functions/login` y `supabase/functions/crear-usuario` (desde el editor del panel o con `supabase functions deploy`), con **Verify JWT desactivado**; cada función valida por su cuenta. La clave `service_role` solo existe en el servidor de Supabase, nunca en la app.
-5. **Authentication → Emails → Reset Password:** agregar `{{ .Token }}` a la plantilla para que el correo incluya el código de recuperación.
+5. **Authentication → Emails → Reset Password:** agregar `{{ .Token }}` a la plantilla para que el correo incluya el código de recuperación (plantilla lista en `supabase/templates/recovery.html`). En el plan gratuito, Supabase solo permite editar plantillas después de configurar un SMTP propio (Authentication → SMTP); sin SMTP, el correo de recuperación llega con un enlace en lugar del código.
 6. Correo: el servidor de correo incluido en Supabase tiene un límite bajo de envíos. Si no envía a direcciones externas, la cuenta se crea igual y la app lo indica. Para producción se configura un SMTP propio en Authentication → SMTP.
 
 El archivo `.env` está en `.gitignore`. Solo se usa la clave **pública** (anon/publishable).
+
+**Alternativa con Supabase CLI** (lo usado en este proyecto): `npx supabase login`, `npx supabase link --project-ref <REF>`, `npx supabase db push` (aplica `supabase/migrations`), `npx supabase functions deploy login --no-verify-jwt` y `npx supabase functions deploy crear-usuario --no-verify-jwt`.
 
 ### Generar el APK Android
 
@@ -55,7 +57,9 @@ npm run android:sync         # build web + copia a Android
 npx cap open android         # Android Studio → Build → Build APK(s)
 ```
 
-El APK queda en `android/app/build/outputs/apk/debug/app-debug.apk` y se publica en la sección *Releases* del repositorio.
+El APK queda en `android/app/build/outputs/apk/debug/app-debug.apk`. **APK instalable:** carpeta [`apk/`](apk) del repositorio y sección *Releases* (v1.0).
+
+El ícono de la app y el splash se generan desde `assets/` (logo y splash) y están en `android/app/src/main/res`.
 
 ## Arquitectura
 
