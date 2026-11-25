@@ -113,9 +113,9 @@ npm run dev
 
 **Repositorio de implementación:** https://github.com/Dilanbkr7/Examen-Moviles-
 
-**Commit de documentación ADR:** [eca5b01](https://github.com/Dilanbkr7/Examen-Moviles-/commit/eca5b01).
+**Commit de documentación ADR:** [c046e68](https://github.com/Dilanbkr7/Examen-Moviles-/commit/c046e68).
 
-**Commit de implementación:** [c476031](https://github.com/Dilanbkr7/Examen-Moviles-/commit/c476031) (AuthContext y rutas protegidas).
+**Commit de implementación:** [8dc6583](https://github.com/Dilanbkr7/Examen-Moviles-/commit/8dc6583) (AuthContext y rutas protegidas).
 
 **Responsabilidad:** la decisión arquitectónica fue grupal; la implementación documentada en este repositorio corresponde a Dilan Artemio Obando Suárez.
 

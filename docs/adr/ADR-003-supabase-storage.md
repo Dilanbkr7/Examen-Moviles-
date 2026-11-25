@@ -130,8 +130,8 @@ Las pruebas funcionales de carga y visualización desde la aplicación móvil de
 
 ## Trazabilidad
 
-- **Commit de documentación ADR:** [eca5b01](https://github.com/Dilanbkr7/Examen-Moviles-/commit/eca5b01).
-- **Commit de implementación:** [5156ba0](https://github.com/Dilanbkr7/Examen-Moviles-/commit/5156ba0) (`src/services/fotoService.ts` y `supabase/03_storage.sql`).
+- **Commit de documentación ADR:** [c046e68](https://github.com/Dilanbkr7/Examen-Moviles-/commit/c046e68).
+- **Commit de implementación:** [e5b4979](https://github.com/Dilanbkr7/Examen-Moviles-/commit/e5b4979) (`src/services/fotoService.ts` y `supabase/03_storage.sql`).
 - **Repositorio de implementación:** https://github.com/Dilanbkr7/Examen-Moviles-
 
 La configuración del bucket y sus políticas fue realizada individualmente por Dilan Artemio Obando Suárez en este repositorio.

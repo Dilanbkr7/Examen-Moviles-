@@ -78,8 +78,8 @@ Se selecciona **Ionic React con TypeScript**, debido a que permite desarrollar i
 
 ## Trazabilidad
 
-- **Commit de documentación ADR:** [eca5b01](https://github.com/Dilanbkr7/Examen-Moviles-/commit/eca5b01).
-- **Commit de implementación:** [04176d2 - Inicialización de la estructura del proyecto](https://github.com/Dilanbkr7/Examen-Moviles-/commit/04176d2).
+- **Commit de documentación ADR:** [c046e68](https://github.com/Dilanbkr7/Examen-Moviles-/commit/c046e68).
+- **Commit de implementación:** [5cbdf94 - Inicialización de la estructura del proyecto](https://github.com/Dilanbkr7/Examen-Moviles-/commit/5cbdf94).
 - **Repositorio de implementación:** https://github.com/Dilanbkr7/Examen-Moviles-
 
 ## Consenso del equipo

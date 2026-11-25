@@ -128,8 +128,8 @@ Las pruebas funcionales completas de todos los roles y módulos deberán registr
 
 ## Trazabilidad
 
-- **Commit de documentación ADR:** [eca5b01](https://github.com/Dilanbkr7/Examen-Moviles-/commit/eca5b01).
-- **Commit de implementación:** [ab8abe3](https://github.com/Dilanbkr7/Examen-Moviles-/commit/ab8abe3) (esquema, RLS, Edge Functions y cliente `src/config/supabase.ts`).
+- **Commit de documentación ADR:** [c046e68](https://github.com/Dilanbkr7/Examen-Moviles-/commit/c046e68).
+- **Commit de implementación:** [fc5fef1](https://github.com/Dilanbkr7/Examen-Moviles-/commit/fc5fef1) (esquema, RLS, Edge Functions y cliente `src/config/supabase.ts`).
 - **Repositorio de implementación:** https://github.com/Dilanbkr7/Examen-Moviles-
 
 La configuración del backend y la base de datos fue realizada individualmente por Dilan Artemio Obando Suárez en este repositorio.
